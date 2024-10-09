@@ -30,12 +30,11 @@
 #include <util/delay.h>
 #include <stdint.h>
 
-
-#include <ssd1306CommandSet.h>
-#include "twi328P.h"
-
+#include <ssd1306/ssd1306CommandSet.h>
+#include "twi328P/twi328P.h"
 
 #define MEMORY_ALLOC_ERROR	0b10101010
+
 
 
 class ssd1306 {

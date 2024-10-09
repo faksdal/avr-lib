@@ -33,7 +33,7 @@ twi328P::twi328P(void)
 //
 //	Description:	initialises the i2c/twi bus, making it ready for transmission
 //					sets TWBR according to the desired bus speed based on formula on p.222 in the data sheet
-//					it also sets the prescaler bits in the TWSR, p.241 in the data sheet
+//					it also sets the prescaler bits in the TWSR, p.243 in the data sheet
 //					This should be called only once by the application
 //
 //	arguments:		none
@@ -98,7 +98,7 @@ void	twi328P::initBus(uint32_t _busSpeed)
 
 	//
 	//	Clear the prescaler bits in the TWSR, setting the prescaler to 1
-	//	See p.240 in data sheet
+	//	See p.243 in data sheet
 	//
 	//	The prescaler bits are the two LSB in the TWCR, TWPS1 and TWPS0
 	//

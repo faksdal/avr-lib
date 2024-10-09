@@ -10,6 +10,7 @@
 #ifndef __TWI328P_H__
 #define __TWI328P_H__
 
+// TODO: re-structure F_CPU to be part of init-process
 #ifndef F_CPU
 	#define F_CPU	8000000UL
 #endif
@@ -88,18 +89,10 @@ public:
 	void	blinkLED(uint8_t _PORT, uint16_t count, uint8_t blinkNormal);
 
 	uint8_t	checkStatusRegister(uint8_t _status);
+
 	//void	disableBus(void);
-
-
-
 	//uint8_t	sendStart(void);
-
-
 	//uint8_t	write(uint8_t data);
-
-
-
-
 
 };
 
