@@ -20,7 +20,11 @@
 #
 #PORT		= usb-0000
 DEVICE		= atmega328p
-CPU_FREQ	= 16000000UL
+
+ifndef CPU_FREQ
+	CPU_FREQ	= 16000000UL
+endif
+
 #PROGRAMMER	= atmelice_isp
 #BAUD		= 115200
 #BAUD		= 9600
@@ -37,38 +41,9 @@ C_FLAGS		= -c -Wall -Os -mmcu=$(DEVICE)
 INCDIR = inc
 SRCDIR = src
 OBJDIR = obj
-BINDIR = /home/jole/projects/avr-lib/bin
+LIBDIR = /home/jole/projects/avr-lib/lib
 ###############################################################################
 
-$(TARGET).o : twi328P.cpp
-	@echo "Jon Leithe"
-	$(CXX) -c -g -Wall -Os -mmcu=$(DEVICE) -o $(BINDIR)/$(TARGET).o $(INCLUDEPATH) twi328P.cpp
-
-###############################################################################
-#	generate file lists for the compiler/linker
-#SOURCES = $(wildcard *.cpp $(SRCDIR)/*.cpp)
-#OBJFILES = $(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
-###############################################################################
-
-
-
-###############################################################################
-#	Rule to link all object files
-#link: $(OBJFILES)
-$#(TARGET): $(OBJFILES)
-#	@echo "Link section: "$(OBJFILES)
-#	$(CXX) -mmcu=$(DEVICE) $(OBJFILES) -o $(BINDIR)/$(TARGET).elf
-#	avr-objcopy -j .text -j .data -O ihex $(BINDIR)/$(TARGET).elf $(BINDIR)/$(TARGET).hex
-#	avr-size --format=avr --mcu=$(DEVICE) $(BINDIR)/$(TARGET).elf
-	#$(CXX) $(C_FLAGS) -o $(BINDIR)/$(TARGET) $(OBJFILES)
-###############################################################################
-
-
-
-###############################################################################
-#	
-#	
-#$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
-#	@echo "Build file with main()-function:"
-#	$(CXX) $(C_FLAGS) $(INCLUDEPATH) -c -o $@ $^
-###############################################################################
+$(OBJDIR)/$(TARGET).o : twi328P.cpp
+	$(CXX) -c -g -Wall -Os -mmcu=$(DEVICE) -o $(OBJDIR)/$(TARGET).o $(INCLUDEPATH) twi328P.cpp
+	avr-ar rcs $(LIBDIR)/twi328P-lib.a $(OBJDIR)/$(TARGET).o
