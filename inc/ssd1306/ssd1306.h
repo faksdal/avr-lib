@@ -24,6 +24,9 @@
 #ifndef __SSD1306_H__
 #define __SSD1306_H__
 
+#ifndef F_CPU
+#define	F_CPU 8000000UL
+#endif
 
 #include <avr/io.h>
 #include <util/twi.h>

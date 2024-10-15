@@ -41,7 +41,7 @@ C_FLAGS		= -c -Wall -Os -mmcu=$(DEVICE)
 INCDIR = inc
 SRCDIR = src
 OBJDIR = obj
-LIBDIR = /home/jole/projects/avr-lib/lib
+LIBDIR = /home/jole/mnt/projects/avr-lib/lib
 ###############################################################################
 
 $(OBJDIR)/$(TARGET).o : twi328P.cpp
